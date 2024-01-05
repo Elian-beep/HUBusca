@@ -1,17 +1,33 @@
 import { Button, Image, Text, View } from "react-native";
-import { Container } from "./cardSimple.styled";
+import { Container, ImgProfile, NameProfile, TextProfile } from "./cardSimple.styled";
 import IProfile from "../../pages/interfaces/IProfile";
+import { useEffect, useState } from "react";
 
-export const CardSimple = (profile : IProfile) => {
+import { nonePerson } from "../../mock/nonePerson";
+
+interface Props {
+    person?: string
+}
+
+export const CardSimple = ({ person }: Props) => {
+    const [findedProfile, setFindedProfile] = useState<IProfile>(nonePerson);
+
+    useEffect(() => {
+        searchProfile();
+    }, [person]);
+
+    const searchProfile = async () => {
+        
+    }
 
     return (
         <Container>
-            <Image source={{ uri: profile.photo }}  />
+            <ImgProfile source={{ uri: findedProfile.photo }}  />
             <View>
-                <Text>{profile.name}</Text>
+                <NameProfile>{findedProfile.name}</NameProfile>
                 <View>
-                    <Text>Login: {profile.login}</Text>
-                    <Text>Localização: {profile.location}</Text>
+                    <TextProfile>Login: {findedProfile.login}</TextProfile>
+                    <TextProfile>Localização: {findedProfile.location}</TextProfile>
                 </View>
             </View>
         </Container>
