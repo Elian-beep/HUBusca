@@ -4,9 +4,10 @@ import IProfile from "../../interfaces/IProfile";
 import CardSimple from "../../components/CardSimple";
 import { NavigationProp } from "@react-navigation/native";
 
-export const Profile = (props, navigation: NavigationProp<any>) => {
+export const Profile = (props) => {
 
-    const user: IProfile = props.route.params;
+    const user: IProfile = props.route.params.user;
+    const navigation = props.route.params.navigation;
 
     return (
         <Content>

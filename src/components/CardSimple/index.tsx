@@ -41,7 +41,7 @@ export const CardSimple = ({ person, navigation, plus }: CardSimpleProps) => {
         <Container>
             <TouchableOpacity 
                 onPress={() => 
-                    navigation.navigate('profile', findedProfile)
+                    navigation.navigate('profile', {user: findedProfile, navigation})
                 }
             >
                 <ImgProfile source={{ uri: findedProfile.photo }} />
