@@ -3,11 +3,6 @@ import styled from "styled-components/native";
 interface Props  {
 }
 
-export const Container = styled.View`
-    margin-top: 30px;
-    padding: 20px;
-`
-
 export const MainTitle = styled.Text`
     text-align: center;
     margin-top: 20px;

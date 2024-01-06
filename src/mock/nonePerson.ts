@@ -1,4 +1,4 @@
-import IProfile from "../pages/interfaces/IProfile";
+import IProfile from "../interfaces/IProfile";
 
 export const nonePerson: IProfile =  {
     id: 0,
