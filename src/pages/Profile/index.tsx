@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import IRepos from "../../interfaces/IRepos";
 import { ScrollRepos } from "./profile.styled";
 import CardRepo from "../../components/CardRepo";
+import { createUserData } from "../../data/User";
 
 export const Profile = (props) => {
     const [repos, setRepos] = useState<IRepos[]>([]);
@@ -17,8 +18,15 @@ export const Profile = (props) => {
 
 
     useEffect(() => {
+        saveUser();
         getRepos();
     }, []);
+    
+    const saveUser = async () => {
+        await createUserData(user)
+            .then(id => console.log('Item criado com o id: ' + id))
+            .catch(err => console.log(err))
+    }
 
     const getRepos = async () => {
         const response = await getReposRequire(user.login);
@@ -42,7 +50,7 @@ export const Profile = (props) => {
     return (
         <Content>
             <Button title="Voltar" onPress={() => navigation.navigate('home')} />
-            <CardSimple person={user.login} plus={true} />
+            <CardSimple findedProfile={user} plus={true} />
             <BoxHor>
                 <Text>{user.id}</Text>
                 <Text>Seguidores: {user.followers}</Text>
@@ -50,7 +58,7 @@ export const Profile = (props) => {
             <ScrollRepos>
                 {repos &&
                     repos.map(repoItem => (
-                        <CardRepo 
+                        <CardRepo
                             key={repoItem.id}
                             created_at={repoItem.created_at}
                             html_url={repoItem.html_url}

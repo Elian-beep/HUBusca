@@ -4,6 +4,7 @@ import CardSimple from "../../components/CardSimple";
 import { useState } from "react";
 import IProfile from "../../interfaces/IProfile";
 import { Content } from "../../defaultStyles";
+import Card from "../../components/Card";
 
 export const Home = ({ navigation }) => {
 
@@ -16,7 +17,7 @@ export const Home = ({ navigation }) => {
                 <Inpt onChangeText={text => setSearchProfile(text)} placeholder="Perfil a ser buscado" />
                 {/* <Button title="Buscar" /> */}
             </ContentInpt>
-           <CardSimple navigation={navigation} person={searchProfile} plus={false} />
+           <Card navigation={navigation} person={searchProfile} plus={false} />
         </Content>
     );
 }
